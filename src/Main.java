@@ -1,3 +1,5 @@
+import creatures.Animal;
+import creatures.Human;
 import device.Car;
 import device.Phone;
 
@@ -46,7 +48,10 @@ public class Main {
         kot.feed();
 
         Human kacper = new Human("Kacper");
-
+        kacper.car = passat;
+        kacper.animal = kot;
+        kacper.cash = 10000.0;
+        kacper.phone = samsung;
         System.out.println(kacper.weight);
         System.out.println(kacper.species);
 

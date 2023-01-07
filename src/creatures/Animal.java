@@ -1,8 +1,12 @@
-public class Animal {
-    String species;
-    String name;
-    Double weight;
-    Boolean alive;
+package creatures;
+
+import device.Saleable;
+
+public class Animal implements Saleable {
+    public String species;
+    public String name;
+    public Double weight;
+    public  Boolean alive;
 
     public Animal(String species) {
         this.species = species;
@@ -32,6 +36,11 @@ public class Animal {
         else{
             System.out.println("nie mozesz wyjsc na spacer z martwym zwierzeciem");
         }
+
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price) {
 
     }
 }
