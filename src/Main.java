@@ -34,8 +34,6 @@ public class Main {
         kot.takeForAWalk();
         kot.takeForAWalk();
         kot.takeForAWalk();
-        kot.takeForAWalk();
-        kot.takeForAWalk();
         kot.feed();
 
 
