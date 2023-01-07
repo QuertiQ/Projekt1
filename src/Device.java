@@ -8,4 +8,13 @@ public class Device {
         this.model = model;
         this.producer = producer;
     }
+
+    @Override
+    public String toString() {
+        return "Device{" +
+                "model='" + model + '\'' +
+                ", producer='" + producer + '\'' +
+                ", yearOfProduction=" + yearOfProduction +
+                '}';
+    }
 }

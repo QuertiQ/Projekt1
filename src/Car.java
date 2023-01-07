@@ -9,5 +9,17 @@ public class Car extends Device {
         this.fueltype = fueltype;
         this.color = color;
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "millage=" + millage +
+                ", fueltype='" + fueltype + '\'' +
+                ", color='" + color + '\'' +
+                ", model='" + model + '\'' +
+                ", producer='" + producer + '\'' +
+                ", yearOfProduction=" + yearOfProduction +
+                '}';
+    }
 }
 
