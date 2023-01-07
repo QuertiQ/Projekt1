@@ -1,7 +1,9 @@
-public class Device {
-    String model;
-    String producer;
-    Integer yearOfProduction;
+package device;
+
+public abstract class Device {
+  public  String model;
+  public  String producer;
+  public  Integer yearOfProduction;
 
     public Device(Integer yearOfProduction, String model, String producer) {
         this.yearOfProduction = yearOfProduction;
@@ -11,10 +13,11 @@ public class Device {
 
     @Override
     public String toString() {
-        return "Device{" +
+        return "device.Device{" +
                 "model='" + model + '\'' +
                 ", producer='" + producer + '\'' +
                 ", yearOfProduction=" + yearOfProduction +
                 '}';
     }
+    public abstract void turnOn();
 }

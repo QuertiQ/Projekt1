@@ -1,7 +1,9 @@
+package device;
+
 public class Car extends Device {
-    Double millage;
-    String fueltype;
-    String color;
+   public Double millage;
+   public String fueltype;
+   public String color;
 
     public Car(String model, String producer, Integer yearOfProduction, Double millage, String fueltype, String color) {
         super(yearOfProduction, model, producer);
@@ -12,7 +14,7 @@ public class Car extends Device {
 
     @Override
     public String toString() {
-        return "Car{" +
+        return "device.Car{" +
                 "millage=" + millage +
                 ", fueltype='" + fueltype + '\'' +
                 ", color='" + color + '\'' +
@@ -20,6 +22,13 @@ public class Car extends Device {
                 ", producer='" + producer + '\'' +
                 ", yearOfProduction=" + yearOfProduction +
                 '}';
+    }
+
+    @Override
+    public void turnOn() {
+        System.out.println("przekrecam kluczyk");
+        System.out.println("czekam");
+        System.out.println("odpala");
     }
 }
 

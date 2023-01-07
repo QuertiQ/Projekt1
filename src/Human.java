@@ -1,3 +1,5 @@
+import device.Car;
+
 public class Human extends Animal {
     String firstname;
     String lastname;

@@ -1,5 +1,7 @@
+package device;
+
 public class Phone extends Device {
-    Double screenSize;
+   public Double screenSize;
     public String os;
 
     public Phone(Integer yearOfProduction, String model, String producer, Double screenSize, String os) {
@@ -10,12 +12,23 @@ public class Phone extends Device {
 
     @Override
     public String toString() {
-        return "Phone{" +
+        return "device.Phone{" +
                 "screenSize=" + screenSize +
                 ", os='" + os + '\'' +
                 ", model='" + model + '\'' +
                 ", producer='" + producer + '\'' +
                 ", yearOfProduction=" + yearOfProduction +
                 '}';
+    }
+
+    @Override
+    public void turnOn() {
+        System.out.println("wciskam przyicsk");
+        System.out.println("czekam");
+        System.out.println("czekam");
+        System.out.println("czekam");
+        System.out.println("widze logo");
+        System.out.println("czekam");
+        System.out.println("działa");
     }
 }

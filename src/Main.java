@@ -1,3 +1,6 @@
+import device.Car;
+import device.Phone;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -31,7 +34,7 @@ public class Main {
         System.out.println("gatunek: " + kot.species);
         System.out.println("imie: " + kot.name);
         System.out.println("waga: " + kot.weight);
-        if(kot.alive == true)
+        if(kot.alive)
         {
             System.out.println("czy zyje: tak");}
         else{
@@ -47,6 +50,8 @@ public class Main {
         System.out.println(kacper.weight);
         System.out.println(kacper.species);
 
+        passat.turnOn();
+        samsung.turnOn();
 
     }
 
