@@ -4,15 +4,16 @@ import creatures.Human;
 
 import java.util.Objects;
 
-public class Car extends Device implements Saleable {
+public abstract class Car extends Device implements Saleable {
    public Double millage;
    public String fueltype;
    public String color;
    public Double value;
    public Double price;
    public String name;
+   public Double amountoffuel;
 
-    public Car(String model,Double value,Double price, String producer, Integer yearOfProduction, Double millage, String fueltype, String color, String name) {
+    public Car(String model,Double value,Double price, String producer, Integer yearOfProduction, Double millage, String fueltype, String color, String name, Double amountoffuel) {
         super(yearOfProduction, model, producer);
         this.millage = millage;
         this.fueltype = fueltype;
@@ -20,6 +21,7 @@ public class Car extends Device implements Saleable {
         this.price = price;
         this.value = value;
         this.name = name;
+        this.amountoffuel = amountoffuel;
     }
 
     @Override
@@ -71,7 +73,9 @@ public class Car extends Device implements Saleable {
                 System.out.println("auto zostało przekazane "+ buyer.firstname + " transakcja przebegla pomyślnie");
 
             }
-        }
 
-    }
+        }
+        public abstract void refuel(double amount, Human owner);
+
+}
 
