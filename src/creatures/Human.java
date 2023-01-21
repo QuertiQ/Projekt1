@@ -40,7 +40,22 @@ public class Human extends Animal {
         System.out.println("Konieczność odebrania aneksu do umowy od pani Hani z kadr.");
         System.out.println("ZUS i US już wiedzą o zmianie wypłaty, nie ma sensu ukrywać dochodu.");
         this.salary = salary;
+     }
     }
+    public Car getCar() {
+        return this.car;
+    }
+    public void setCar(Car car, Double price) {
+        if(this.salary > price) {
+            System.out.println("Udało się kupić samochód za gotówkę.");
+            this.car = car;
+        } else if (this.salary > (price/12)) {
+            System.out.println("Udało się kupić samochód na kredyt.");
+            this.car = car;
+        } else {
+            System.out.println("Nie stać cię na ten samochód.");
+        }
     }
 }
+
 

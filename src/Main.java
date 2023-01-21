@@ -6,14 +6,14 @@ import device.Phone;
 public class Main {
     public static void main(String[] args) {
 
-        Car passat = new Car("vw","vw",1999,160000.0,"diesel","czarny");
+        Car passat = new Car("vw",4000.0,3000.0,"vw",1999,160000.0,"diesel","czarny");
         passat.millage = 70000.0;
 
         System.out.println("Producent: " + passat.producer);
         System.out.println("Model auta: " + passat.model);
         System.out.println("Rok produkcji: " + passat.yearOfProduction);
         System.out.println("Przebieg: " + passat.millage);
-        Car fiat = new Car("fiat","fiat",1999,160000.0,"diesel","niebieski");
+        Car fiat = new Car("fiat",2500.0, 2000.0,"fiat",1999,160000.0,"diesel","niebieski");
 
         fiat.millage = 312312.5;
         System.out.println();
@@ -62,7 +62,8 @@ public class Main {
 
         System.out.println(jan.salary);
         Double currentSalary = jan.getSalary();
-
+        jan.setSalary(5000.0);
+        kacper.setCar(fiat, fiat.price);
     }
 
 }

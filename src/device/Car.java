@@ -6,12 +6,16 @@ public class Car extends Device implements Saleable {
    public Double millage;
    public String fueltype;
    public String color;
+   public Double value;
+   public Double price;
 
-    public Car(String model, String producer, Integer yearOfProduction, Double millage, String fueltype, String color) {
+    public Car(String model,Double value,Double price, String producer, Integer yearOfProduction, Double millage, String fueltype, String color) {
         super(yearOfProduction, model, producer);
         this.millage = millage;
         this.fueltype = fueltype;
         this.color = color;
+        this.price = price;
+        this.value = value;
     }
 
     @Override
