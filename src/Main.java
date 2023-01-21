@@ -1,5 +1,7 @@
 import creatures.Animal;
+import creatures.FarmAnimals;
 import creatures.Human;
+import creatures.Pet;
 import device.Car;
 import device.Phone;
 
@@ -7,69 +9,13 @@ public class Main {
     public static void main(String[] args) {
 
         Car passat = new Car("vw",4000.0,3000.0,"vw",1999,160000.0,"diesel","czarny","passat");
-        passat.millage = 70000.0;
-
-        System.out.println("Producent: " + passat.producer);
-        System.out.println("Model auta: " + passat.model);
-        System.out.println("Rok produkcji: " + passat.yearOfProduction);
-        System.out.println("Przebieg: " + passat.millage);
         Car fiat = new Car("fiat",2500.0, 2000.0,"fiat",1999,160000.0,"diesel","niebieski", "fiat");
-
-        fiat.millage = 312312.5;
-        System.out.println();
-        System.out.println("Producent: " + fiat.producer);
-        System.out.println("Model auta: " + fiat.model);
-        System.out.println("Rok produkcji: " + fiat.yearOfProduction);
-        System.out.println("Przebieg: " + fiat.millage);
-        Phone samsung = new Phone(2016,"s21","samsung",20.5,"android");
-        System.out.println("Producent " + samsung.producer);
-        System.out.println("Model " + samsung.model);
-        System.out.println("Rok produkcji  " + samsung.yearOfProduction);
-        System.out.println("Wielkosc obrazu  " + samsung.screenSize);
-        System.out.println("System " + samsung.os);
-
-        Animal kot = new Animal("Ssak");
-        kot.name = "puszek";
-        kot.weight = 1.5;
-        kot.alive = true;
-
-        System.out.println("gatunek: " + kot.species);
-        System.out.println("imie: " + kot.name);
-        System.out.println("waga: " + kot.weight);
-        if(kot.alive)
-        {
-            System.out.println("czy zyje: tak");}
-        else{
-            System.out.println("czy zyje: nie");
-        }
-        kot.takeForAWalk();
-        kot.takeForAWalk();
-        kot.takeForAWalk();
+        Pet kot = new Pet("Ssak",7.0,true,"Fafik",4);
+        FarmAnimals krowa = new FarmAnimals("Ssak",50.0,true,"Mleko",1200.0);
+        krowa.feed(2);
+        System.out.println(krowa.weight);
         kot.feed();
-
-        Human kacper = new Human("Kacper");
-        kacper.car = passat;
-        kacper.animal = kot;
-        kacper.cash = 10000.0;
-        kacper.phone = samsung;
-        System.out.println(kacper.weight);
-        System.out.println(kacper.species);
-
-        passat.turnOn();
-        samsung.turnOn();
-        Human jan = new Human("Jan");
-        jan.setSalary(2500.0);
-        jan.cash = 1000000.0;
-        kacper.cash = 10000000000000.0;
-
-        System.out.println(jan.salary);
-        Double currentSalary = jan.getSalary();
-        jan.setSalary(5000.0);
-        kacper.setCar(fiat, fiat.price);
-        jan.car = passat;
-        kacper.car = null;
-        passat.sell(jan,kacper,2000.0);
-        System.out.println(kacper.car.name);
+        System.out.println(kot.weight);
 
 
     }

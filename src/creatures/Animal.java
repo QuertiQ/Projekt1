@@ -2,19 +2,20 @@ package creatures;
 
 import device.Saleable;
 
-public class Animal implements Saleable {
+abstract public class Animal implements Saleable, Feedable {
     public String species;
-    public String name;
     public Double weight;
     public  Boolean alive;
 
     public Animal(String species) {
         this.species = species;
+        this.weight = 0.0;
+        this.alive = true;
     }
     public void feed(){
         if(this.alive == true) {
             this.weight += 0.5;
-            System.out.println(this.name + " zostal nakarmiony jego aktualna waga to: " + this.weight);
+            System.out.println("zwierzak zostal nakarmiony jego aktualna waga to: " + this.weight);
         }
         else{
             System.out.println("nie mozesz nakarmic martwego zwierzecia");
@@ -26,7 +27,7 @@ public class Animal implements Saleable {
 
             this.weight -= 0.5;
 
-        System.out.println(this.name +" zostal zabrany na spacer jego aktualna waga to: " + this.weight);
+        System.out.println("zwierzak zostal zabrany na spacer jego aktualna waga to: " + this.weight);
             if (this.weight <= 0)
             {
                 System.out.println("twój kot umarl");
@@ -60,9 +61,18 @@ public class Animal implements Saleable {
     public String toString() {
         return "Animal{" +
                 "species='" + species + '\'' +
-                ", name='" + name + '\'' +
                 ", weight=" + weight +
                 ", alive=" + alive +
                 '}';
+    }
+    @Override
+    public void feed(double foodWeight) {
+        if(this.alive == true) {
+            this.weight += foodWeight;
+            System.out.println("zwierzak zostal nakarmiony " + foodWeight + " kg jego aktualna waga to: " + this.weight);
+        }
+        else{
+            System.out.println("nie mozesz nakarmic martwego zwierzecia");
+        }
     }
 }

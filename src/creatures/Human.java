@@ -68,7 +68,6 @@ public class Human extends Animal {
                 ", animal=" + animal +
                 ", salary=" + salary +
                 ", species='" + species + '\'' +
-                ", name='" + name + '\'' +
                 ", weight=" + weight +
                 ", alive=" + alive +
                 '}';
@@ -77,6 +76,7 @@ public class Human extends Animal {
         System.out.println("Sprzedaż ludzi jest zabroniona.");
         return;
     }
-}
+    }
+
 
 
