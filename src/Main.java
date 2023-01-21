@@ -57,6 +57,11 @@ public class Main {
 
         passat.turnOn();
         samsung.turnOn();
+        Human jan = new Human("Jan");
+        jan.setSalary(2500.0);
+
+        System.out.println(jan.salary);
+        Double currentSalary = jan.getSalary();
 
     }
 
