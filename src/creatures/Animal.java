@@ -41,6 +41,28 @@ public class Animal implements Saleable {
 
     @Override
     public void sell(Human seller, Human buyer, Double price) {
+        if(buyer.cash < price){
+            System.out.println("nie masz kasy");
+        }else if(seller.animal != this){
+            System.out.println("nie masz tego zwierzęcia");
+        }
+        else{
+            seller.cash += price;
+            buyer.cash -= price;
+            buyer.animal = seller.animal;
+            seller.animal = null;
+            System.out.println("zwierze zostało przekazane "+ buyer.firstname + " transakcja przebegla pomyślnie");
+        }
+    }
 
+
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "species='" + species + '\'' +
+                ", name='" + name + '\'' +
+                ", weight=" + weight +
+                ", alive=" + alive +
+                '}';
     }
 }

@@ -56,6 +56,27 @@ public class Human extends Animal {
             System.out.println("Nie stać cię na ten samochód.");
         }
     }
+
+    @Override
+    public String toString() {
+        return "Human{" +
+                "firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", car=" + car +
+                ", cash=" + cash +
+                ", phone=" + phone +
+                ", animal=" + animal +
+                ", salary=" + salary +
+                ", species='" + species + '\'' +
+                ", name='" + name + '\'' +
+                ", weight=" + weight +
+                ", alive=" + alive +
+                '}';
+    }
+    public void sell(Human seller, Human buyer, Double price) {
+        System.out.println("Sprzedaż ludzi jest zabroniona.");
+        return;
+    }
 }
 
 
