@@ -8,7 +8,7 @@ public class Disel extends Car{
         super(model, value, price, producer, yearOfProduction, millage, fueltype, color, name, amountoffuel);
     }
 
-    @Override
+
     public void refuel(double amount, Human owner) {
         if (owner.cash < (fuelprice * amount)){
             System.out.println("Nie masz wystarczającej ilości gotówki, aby zatankować swój samochód z silnikiem Diesla.");

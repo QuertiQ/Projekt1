@@ -4,12 +4,14 @@ import creatures.Animal;
 import device.Car;
 import device.Phone;
 
-import java.time.LocalDateTime;
-
 public class Human extends Animal {
-   public String firstname;
+    private static final int DEFAULT_GARAGE_SIZE = 3;
+    private static final Double DEFAULT_HUMAN_WEIGHT = 70.0;
+    private static final Double DEFAULT_START_SALARY = 0.0;
+    private static final String HUMAN_SPECIES = "homo sapiens";
+    public String firstname;
     public String lastname;
-    public Car car;
+    public Car[] garage;
     public Double cash;
     public Phone phone;
     public Animal animal;
@@ -20,63 +22,74 @@ public class Human extends Animal {
         this.salary = 0.0;
         this.firstname = firstname;
         this.weight = 70.0;
+        this.garage = new Car[DEFAULT_GARAGE_SIZE];
     }
-
-    public Double getSalary() {
-        System.out.println("Dane o wypłacie były pobierane " + LocalDateTime.now());
-        System.out.println("Wartość wypłaty przed zwróceniem: " + this.salary);
-        return this.salary;
-    }
-
-
-
-    public void setSalary(Double salary) {
-        if(salary < 0) {
-            System.out.println("Nie można przypisać ujemnej wartości wypłaty!");
-            return;
-        }
-        else{
-        System.out.println("Nowe dane zostały wysłane do systemu księgowego.");
-        System.out.println("Konieczność odebrania aneksu do umowy od pani Hani z kadr.");
-        System.out.println("ZUS i US już wiedzą o zmianie wypłaty, nie ma sensu ukrywać dochodu.");
-        this.salary = salary;
-     }
-    }
-    public Car getCar() {
-        return this.car;
-    }
-    public void setCar(Car car, Double price) {
-        if(this.salary > price) {
-            System.out.println("Udało się kupić samochód za gotówkę.");
-            this.car = car;
-        } else if (this.salary > (price/12)) {
-            System.out.println("Udało się kupić samochód na kredyt.");
-            this.car = car;
-        } else {
-            System.out.println("Nie stać cię na ten samochód.");
-        }
-    }
-
-    @Override
-    public String toString() {
-        return "Human{" +
-                "firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", car=" + car +
-                ", cash=" + cash +
-                ", phone=" + phone +
-                ", animal=" + animal +
-                ", salary=" + salary +
-                ", species='" + species + '\'' +
-                ", weight=" + weight +
-                ", alive=" + alive +
-                '}';
+    public Human(String firstname, Integer garageSize) {
+        super(HUMAN_SPECIES);
+        this.weight = DEFAULT_HUMAN_WEIGHT;
+        this.salary = DEFAULT_START_SALARY;
+        this.firstname = firstname;
+        this.garage = new Car[garageSize];
     }
     public void sell(Human seller, Human buyer, Double price) {
         System.out.println("Sprzedaż ludzi jest zabroniona.");
         return;
     }
+
+    public void setCar(Car newCar, Integer parkingLotNumber) {
+        if (parkingLotNumber >= this.garage.length) {
+            System.out.println("sorry, nie mamy tak dużego garażu");
+        } else if (parkingLotNumber < 0) {
+            System.out.println("chyba coś ci na łeb upadło");
+        } else if (this.garage[parkingLotNumber] != null) {
+            System.out.println("sorry miejsce zajęte");
+        } else {
+            this.garage[parkingLotNumber] = newCar;
+        }
+    }
+    public void getCar(Integer parkingLotNumber) {
+        if (parkingLotNumber >= this.garage.length) {
+            System.out.println("sorry, nie mamy tak dużego garażu");
+        } else if (parkingLotNumber < 0) {
+            System.out.println("chyba coś ci na łeb upadło");
+        } else if (this.garage[parkingLotNumber] == null) {
+            System.out.println("na tym miejscu nie ma zadnego auta");
+        } else {
+            this.garage[parkingLotNumber] = null;
+        }
     }
 
-
-
+    public Double getValueOfAllCars() {
+        Double valueOfCars = 0.0;
+        for (int i = 0; i < this.garage.length; i++) {
+            if (this.garage[i] != null) {
+                valueOfCars += this.garage[i].value;
+            }
+        }
+        return valueOfCars;
+    }
+    public void displayGarage() {
+        for (int i = 0; i < this.garage.length; i++) {
+            if (this.garage[i] != null) {
+                System.out.println("na miejscu nr " + i + " jest auto: " + this.garage[i].toString());
+            } else {
+                System.out.println("Miejsce nr " + i + " jest puste");
+            }
+        }
+    }
+    public void sortGarage() {
+        for (int i = 1; i < this.garage.length; i++) {
+            if (this.garage[i] == null) {
+                continue;
+            }
+            Car ter = this.garage[i];
+            int j = i - 1;
+            while (j >= 0 && (this.garage[j] == null || this.garage[j].yearOfProduction > ter.yearOfProduction)) {
+                this.garage[j + 1] = this.garage[j];
+                j = j - 1;
+            }
+            this.garage[j + 1] = ter;
+        }
+        displayGarage();
+    }
+}

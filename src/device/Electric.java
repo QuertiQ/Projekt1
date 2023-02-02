@@ -7,7 +7,6 @@ public class Electric extends Car {
         super(model, value, price, producer, yearOfProduction, millage, fueltype, color, name, amountoffuel);
     }
 
-    @Override
     public void refuel(double amount, Human owner) {
         amountoffuel += amount;
         if (amountoffuel > 100) {
@@ -17,4 +16,4 @@ public class Electric extends Car {
         System.out.println("auto elektryczne tankuje za darmo :) aktalnie twoje auto ma " + amountoffuel + " % naładowania");
     }
 
-    }
+}

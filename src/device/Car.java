@@ -5,13 +5,13 @@ import creatures.Human;
 import java.util.Objects;
 
 public abstract class Car extends Device implements Saleable {
-   public Double millage;
-   public String fueltype;
-   public String color;
-   public Double value;
-   public Double price;
-   public String name;
-   public Double amountoffuel;
+    public Double millage;
+    public String fueltype;
+    public String color;
+    public Double value;
+    public Double price;
+    public String name;
+    public Double amountoffuel;
 
     public Car(String model,Double value,Double price, String producer, Integer yearOfProduction, Double millage, String fueltype, String color, String name, Double amountoffuel) {
         super(yearOfProduction, model, producer);
@@ -58,24 +58,45 @@ public abstract class Car extends Device implements Saleable {
         System.out.println("odpala");
     }
 
-
-    @Override
-        public void sell(Human seller, Human buyer, Double price) {
-            if (buyer.cash < price) {
-                System.out.println("nie masz kasy");
-            } else if (seller.car != this) {
-                System.out.println("nie masz auta");
-            } else {
-                seller.cash += price;
-                buyer.cash -= price;
-                buyer.car = seller.car;
-                seller.car = null;
-                System.out.println("auto zostało przekazane "+ buyer.firstname + " transakcja przebegla pomyślnie");
-
+    public void sell(Human seller, Human buyer, Double price) throws Exception {
+        boolean isCarInGarage = false;
+        for (int i = 0; i < seller.garage.length; i++) {
+            if (seller.garage[i] != null && seller.garage[i].equals(this)) {
+                isCarInGarage = true;
+                break;
             }
-
         }
-        public abstract void refuel(double amount, Human owner);
+        if (!isCarInGarage) {
+            throw new Exception("Sprzedawca nie posiada tego samochodu w garażu.");
+        }
 
+        int freespace = -1;
+        for (int i = 0; i < buyer.garage.length; i++) {
+            if (buyer.garage[i] == null) {
+                freespace = i;
+                break;
+            }
+        }
+        if (freespace == -1) {
+            throw new Exception("Kupujący nie posiada wolnego miejsca w garażu.");
+        }
+
+        if (buyer.cash < price) {
+            throw new Exception("Kupujący nie posiada wystarczającej ilości gotówki.");
+        }
+
+        for (int i = 0; i < seller.garage.length; i++) {
+            if (seller.garage[i] != null && seller.garage[i].equals(this)) {
+                seller.garage[i] = null;
+                break;
+            }
+        }
+
+        buyer.garage[freespace] = this;
+        seller.cash += price;
+        buyer.cash -= price;
+        System.out.println("Transakcja zakończyła się sukcesem.");
+    }
 }
+
 
